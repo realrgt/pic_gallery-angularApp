@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { PhotosModule } from './photos/photos.module';
 import { ErrorsModule } from './errors/errors.module';
-import { HomeModule } from './home/home.module';
 import { CoreModule } from './core/core.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +13,11 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     PhotosModule,
     ErrorsModule,
-    HomeModule,
-    CoreModule
+    // HomeModule, //Lazy Loaded => CAN NOT be part of this module
+    CoreModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

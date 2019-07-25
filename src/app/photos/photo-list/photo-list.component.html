@@ -1,4 +1,4 @@
-<h1 style="background: red" apDarkenOnHover brightness="90%">Photos</h1>
+<!-- <h1 style="background: red" apDarkenOnHover brightness="90%">Photos</h1> -->
 <ap-search (onTyping)="filter = $event" [value]="filter"></ap-search>
 <ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
-<ap-load-button [hasMore]="hasMore" (click)="load()" ></ap-load-button>
+<ap-load-button [hasMore]="hasMore" (click)="load()" *ngIf="photos.length > 11"></ap-load-button>

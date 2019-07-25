@@ -12,20 +12,22 @@ import { PlatformDetectorService } from '../../core/platform-detector/platform-d
 export class SignInComponent implements OnInit {
 
   loginForm: FormGroup;
-  @ViewChild('userNameInput', {static: false} ) userNameInput: ElementRef<HTMLInputElement>;
+  @ViewChild('userNameInput', { static: true } ) userNameInput: ElementRef<HTMLInputElement>;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
     private platformDetectorService: PlatformDetectorService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
       password: [null, Validators.required]
     });
+    // tslint:disable-next-line:no-unused-expression
+    this.platformDetectorService.isPlatformBrowser() && this.userNameInput.nativeElement.focus();
   }
 
   login() {

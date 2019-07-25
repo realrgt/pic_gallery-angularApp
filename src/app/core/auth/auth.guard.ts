@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
 
     if(this.userService.isLogged()) {
       this.router.navigate(['user', this.userService.getUserName()]);
-      console.log('ativou guarda de rota');
+      console.log('auth guard activated!!');
       return false;
     }
     return true;

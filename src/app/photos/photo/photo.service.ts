@@ -21,4 +21,14 @@ export class PhotoService {
       params
     });
   }
+
+  upload(file: File, description: string, allowComments: boolean) {
+
+    const formData = new FormData();
+    formData.append('imageFile', file);
+    formData.append('description', description);
+    formData.append('allowComments', allowComments ? 'true' : 'false');
+
+    return this.http.post(this.API + '/photos/upload', formData);
+  }
 }
