@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Photo } from './photo';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotoService {
+
   private readonly API: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
@@ -31,4 +33,11 @@ export class PhotoService {
 
     return this.http.post(this.API + '/photos/upload', formData);
   }
+
+  findById(id: string) {
+    // return this.http.get<Photo>(this.API + '/photos/' + id);
+    return this.http.get<Photo>(`${this.API}/photos/${id}`)
+      .pipe(tap(console.log));
+  }
+
 }
