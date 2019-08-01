@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../user/user';
 import { UserService } from '../user/user.service';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   selector: 'ap-header',
   templateUrl: './header.component.html'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   @Input() title = '';
 
@@ -18,11 +18,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router
-  ) { }
-
-  ngOnInit(): void {
+  ) {
     this.user$ = this.userService.getUser();
-    // this.user$.subscribe(user => this.user = user);
   }
 
   logout() {

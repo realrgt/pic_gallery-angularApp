@@ -3,11 +3,13 @@
     <a class="navbar-brand">{{ title }}</a>
     <div *ngIf="(user$ | async) as user; else askLogin">
       <i class="fa fa-user-circle mr-1"></i>
-      <a class="mr-2">{{ user.name }}</a>
-      <a (click)="logout()">Logout</a>
+      <a class="mr-2">{{ user.name | uppercase }}</a>
+      <i class="fa fa-sign-out ml-3 mr-1"></i>
+      <a (click)="logout()">(Logout)</a>
     </div>
     <ng-template #askLogin>
       <span class="navbar-text">
+        <i class="fa fa-sign-in mr-1"></i>
         <a [routerLink]="['']">Please, login!</a>
       </span>
     </ng-template>

@@ -21,6 +21,7 @@ export class UserService {
 
   setToken(token: string) {
     this.tokenService.setToken(token);
+    this.decodeAndNotify();
   }
 
   getUser() {
@@ -30,8 +31,8 @@ export class UserService {
   private decodeAndNotify() {
     const token = this.tokenService.getToken();
     const user = jwt_decode(token) as User; // (aqui a chamada jwt_decode)
-    this.userSubject.next(user);
     this.userName = user.name;
+    this.userSubject.next(user);
   }
 
   logout() {
