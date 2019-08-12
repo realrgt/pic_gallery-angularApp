@@ -1,5 +1,5 @@
 <header class="fixed-top">
-  <nav class="navbar navbar-light bg-white">
+  <nav class="navbar navbar-light bg-secondary text-white">
     <a class="navbar-brand">{{ title }}</a>
     <div *ngIf="(user$ | async) as user; else askLogin">
       <i class="fa fa-user-circle mr-1"></i>
